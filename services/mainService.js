@@ -22,12 +22,20 @@ const getMain = (req, res) => {
   });
 };
 
-const getNoticias = (req, res) => {
-  db.collection("Noticias")
+const getNoticias = (req, res, par) => {
+  if (par == "api") {
+     db.collection("Noticias")
     .find()
     .toArray((err, results) => {
       res.send(results);
     });
+   } else {
+     db.collection("Noticias")
+    .find()
+    .toArray((err, results) => {
+      return results;
+    });
+    }
 };
 
 const getNovas = async (req, res) => {

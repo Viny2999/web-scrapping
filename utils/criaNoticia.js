@@ -1,5 +1,6 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
+const mainService = require("../service/mainService");
 
 const getSite = async (url, info, par) => {
   await axios.get(url).then(async res => {
@@ -51,6 +52,10 @@ const montaNoticia = async (titulos, resumos, links, datas, noticias) => {
   }
   return noticias;
 };
+
+const checaNoticia = noticias => {
+	let antigas = mainService.getNoticias(,,"checa");
+}
 
 const g1 = async (url, titulos, resumos, datas, links) => {
   let noticias = [];
