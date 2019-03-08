@@ -29,19 +29,19 @@ const recebeResumo = async (url, resumos) => {
 };
 
 const montaNoticia = async (titulos, resumos, noticias) => {
-	await for (i = 0; i < 9; i++) {
-    noticias.push({titulo: titulos[i], noticia: resumos[i]});
+  for (i = 0; i < 9; i++) {
+    noticias.push({ titulo: titulos[i], noticia: resumos[i] });
   }
- return noticias;
-}
+  return noticias;
+};
 
 const g1 = async (url, titulos, resumos) => {
   let noticias = [];
-  
+
   await recebeTitulo(url, titulos);
   await recebeResumo(url, resumos);
-  await montaNoticia(titulos, resumos, noticias);
-  
+  noticias = await montaNoticia(titulos, resumos, noticias);
+
   return noticias;
 };
 
