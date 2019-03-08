@@ -28,17 +28,21 @@ const recebeResumo = async (url, resumos) => {
   // console.log(resumos);
 };
 
+const montaNoticia = async (titulos, resumos, noticias) => {
+	await for (i = 0; i < 9; i++) {
+    noticias.push({titulo: titulos[i], noticia: resumos[i]});
+  }
+ return noticias;
+}
+
 const g1 = async (url, titulos, resumos) => {
+  let noticias = [];
+  
   await recebeTitulo(url, titulos);
   await recebeResumo(url, resumos);
-  for (i = 0; i < 9; i++) {
-    console.log(titulos[i]);
-    console.log(resumos[i]);
-    console.log("\n");
-  }
+  await montaNoticia(titulos, resumos, noticias);
+  
+  return noticias;
 };
 
-exports.getSite = getSite;
-exports.recebeTitulo = recebeTitulo;
-exports.recebeResumo = recebeResumo;
 exports.g1 = g1;

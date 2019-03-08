@@ -5,4 +5,6 @@ const url = "http://g1.globo.com/rio-de-janeiro/ultimas-noticias.html";
 let titulos = [];
 let resumos = [];
 
-utils.g1(url, titulos, resumos);
+let a = utils.g1(url, titulos, resumos);
+
+console.log(a);
