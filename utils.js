@@ -19,30 +19,40 @@ const getSite = async (url, par, info) => {
 };
 
 const recebeTitulo = async (url, titulos) => {
-  titulos = await getSite(url, "titulo", titulos);
-  // console.log(titulos);
+  return new Promise((resolve, reject) => {
+    titulos = getSite(url, "titulo", titulos);
+    console.log(titulos);
+    resolve(titulos);
+  });
 };
 
 const recebeResumo = async (url, resumos) => {
-  resumos = await getSite(url, "resumos", resumos);
-  // console.log(resumos);
+  return new Promise((resolve, reject) => {
+    resumos = getSite(url, "resumos", resumos);
+    resolve(resumos);
+  });
 };
 
 const montaNoticia = async (titulos, resumos, noticias) => {
-  for (i = 0; i < 9; i++) {
-    noticias.push({ titulo: titulos[i], noticia: resumos[i] });
-  }
-  return noticias;
+  return new Promise((resolve, reject) => {
+    for (i = 0; i < 9; i++) {
+      noticias.push({ titulo: titulos[i], noticia: resumos[i] });
+      console.log(titulos[i]);
+    }
+    console.log(noticias);
+    resolve(noticias);
+  });
 };
 
-const g1 = async (url, titulos, resumos) => {
+const g1 = (url, titulos, resumos) => {
   let noticias = [];
+  return new Promise((resolve, reject) => {
+    recebeTitulo(url, titulos);
+    recebeResumo(url, resumos);
+    montaNoticia(titulos, resumos, noticias);
 
-  await recebeTitulo(url, titulos);
-  await recebeResumo(url, resumos);
-  noticias = await montaNoticia(titulos, resumos, noticias);
-
-  return noticias;
+    resolve(noticias);
+  });
 };
 
 exports.g1 = g1;
