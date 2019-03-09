@@ -1,6 +1,5 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const mainService = require("../service/mainService");
 
 const getSite = async (url, info, par) => {
   await axios.get(url).then(async res => {
@@ -36,8 +35,6 @@ const getData = async (links, datas) => {
   for (i = 0; i < 5; i++) {
     datas[i] = await getSite(links[i], info, "datas");
   }
-
-  // console.log(links, datas);
   return datas;
 };
 
@@ -53,9 +50,26 @@ const montaNoticia = async (titulos, resumos, links, datas, noticias) => {
   return noticias;
 };
 
-const checaNoticia = noticias => {
-	let antigas = mainService.getNoticias(,,"checa");
-}
+const checaNoticia = async noticias => {
+  const url = "http://localhost:3000/noticias";
+  let antigas = [];
+
+  antigas = await axios.get(url).then(res => {
+    return res.data;
+  });
+
+  for (i = 0; i < 5; i++) {
+    console.log("novas:", noticias[i].titulo);
+    console.log("antigas:", antigas[i].titulo);
+    for (j = 0; j < 5; j++) {
+      if (noticias[i].titulo === antigas[j].titulo) {
+        noticias.splice(i, 1);
+      }
+    }
+  }
+
+  return noticias;
+};
 
 const g1 = async (url, titulos, resumos, datas, links) => {
   let noticias = [];
@@ -65,6 +79,7 @@ const g1 = async (url, titulos, resumos, datas, links) => {
   links = await recebeTexto(url, links, "links");
   datas = await getData(links, datas);
   noticias = await montaNoticia(titulos, resumos, links, datas, noticias);
+  noticias = await checaNoticia(noticias);
 
   return noticias;
 };

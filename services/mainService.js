@@ -1,4 +1,5 @@
 const criaNoticia = require("../utils/criaNoticia");
+const CSV = require("../utils/CSVGenerator");
 const uri = require("../config/uri");
 const mongo = require("mongodb").MongoClient;
 
@@ -15,27 +16,19 @@ mongo.connect(uri.mlab, { useNewUrlParser: true }, (err, client) => {
   db = client.db("scrapping-db");
 });
 
-const getMain = (req, res) => {
+const getMain = async (req, res) => {
   res.send({
     apiName: `Scrapping API`,
     startDate: dataStart
   });
 };
 
-const getNoticias = (req, res, par) => {
-  if (par == "api") {
-     db.collection("Noticias")
+const getNoticias = (req, res) => {
+  db.collection("Noticias")
     .find()
     .toArray((err, results) => {
       res.send(results);
     });
-   } else {
-     db.collection("Noticias")
-    .find()
-    .toArray((err, results) => {
-      return results;
-    });
-    }
 };
 
 const getNovas = async (req, res) => {
@@ -51,9 +44,21 @@ const getNovas = async (req, res) => {
     db.collection("Noticias").insertOne(noticia, (err, result) => {});
   });
 
-  res.send("Ultimas 5 notícias salvas");
+  res.send({ response: "Ultimas notícias salvas" });
+};
+
+const download = (req, res) => {
+  const file = __dirname + "/../download/ultimas_noticias.csv";
+
+  db.collection("Noticias")
+    .find()
+    .toArray(async (err, results) => {
+      await CSV.generateCSV(results);
+      res.download(file);
+    });
 };
 
 exports.getMain = getMain;
 exports.getNoticias = getNoticias;
 exports.getNovas = getNovas;
+exports.download = download;
