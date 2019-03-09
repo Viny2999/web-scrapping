@@ -59,8 +59,6 @@ const checaNoticia = async noticias => {
   });
 
   for (i = 0; i < 5; i++) {
-    console.log("novas:", noticias[i].titulo);
-    console.log("antigas:", antigas[i].titulo);
     for (j = 0; j < 5; j++) {
       if (noticias[i].titulo === antigas[j].titulo) {
         noticias.splice(i, 1);
