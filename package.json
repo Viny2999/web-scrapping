@@ -1,20 +1,23 @@
 {
-  "name": "prazo-webscrapping",
+  "name": "territorios-webscrapping",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "author": "Viny Menezes",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "cheerio": "^1.0.0-rc.2",
-    "cookie-parser": "^1.4.4",
-    "express": "^4.16.4",
-    "mongodb": "^3.1.13"
+    "axios": "0.19.0",
+    "body-parser": "1.19.0",
+    "cheerio": "1.0.0-rc.3",
+    "express": "4.17.1",
+    "mongodb": "3.3.4",
+    "mongoose": "5.7.10"
+  },
+  "devDependencies": {
+    "nodemon": "1.19.4"
   }
 }

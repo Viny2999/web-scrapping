@@ -1,8 +1,8 @@
-# PRAZO Webscrapping
+# Territórios Webscrapping
 
 ## API REST desenvolvida com o Framework Express e Cheerio
 
-A API consome as últimas notícias do site do G1 por meio de scrapping e salva em um ambiente Mongo.
+A API consome contatos de território do site telenumeros por meio de webscrapping e salva em um ambiente Mongo.
 A lib Cheerio implementa jQuery em server side para manipulação de html mais facilmente.
 
 ### Instruções
@@ -11,7 +11,7 @@ Rode `npm i` e `npm start` para usar a API em `http://localhost:3000`.
 
 ### Endpoints
 
-#### Método `GET` em `http://localhost:3000/noticias`
+#### Método `GET` em `http://localhost:3000/territorios`
 
 Retorna um JSON com todas as notícias catalogadas.
 

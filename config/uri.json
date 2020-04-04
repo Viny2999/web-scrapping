@@ -1,4 +1,0 @@
-{
-  "local": "mongodb://localhost:27017/scrapping-db",
-  "mlab": "mongodb://admin:admin10@ds259802.mlab.com:59802/scrapping-db"
-}

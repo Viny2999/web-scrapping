@@ -1,0 +1,42 @@
+{
+  "NOT_FOUND": {
+    "error": {
+      "message": "Not Found"
+    }
+  },
+  "SERVER_ERROR": {
+    "error": {
+      "message": "Internal Server Error"
+    }
+  },
+  "MISSING_INFORMATION": {
+    "error": {
+      "message": "Missing Information"
+    }
+  },
+  "DUPLICATE_USER": {
+    "error": {
+      "message": "Some fields are duplicated in user"
+    }
+  },
+  "UNAUTHORIZED": {
+    "error": {
+      "message": "User Unauthorized"
+    }
+  },
+  "DUPLICATE_PRODUCT": {
+    "error": {
+      "message": "Some fields are duplicated in product"
+    }
+  },
+  "TOKEN_EXPIRED": {
+    "error": {
+      "message": "Your login timed out"
+    }
+  },
+  "MISSING_INFORMATION_QUERY": {
+    "error": {
+      "message": "Missing limit and page in query string"
+    }
+  }
+}
