@@ -1,12 +1,4 @@
-const criaNoticia = require("./criaNoticia");
-const CSV = require("./CSVGenerator");
 const territorioRepository = require("../repositories/territorio.repository");
-
-const url = "http://g1.globo.com/rio-de-janeiro/ultimas-noticias.html";
-let titulos = [];
-let resumos = [];
-let data = [];
-let links = [];
 
 const getMain = async (req, res) => {
   res.send({
@@ -14,41 +6,27 @@ const getMain = async (req, res) => {
   });
 };
 
-const getNoticias = async (req, res) => {
-  return await territorioRepository.findAll();
+const getTelefones = async (req, res) => {
+  const endereco = req.params.endereco;
+  const result = await territorioRepository.getTelefoneByEndereco(endereco);
+  res.send(result);
 };
 
-const getNovas = async (req, res) => {
-  let ultimasNoticias = await criaNoticia.g1(
-    url,
-    titulos,
-    resumos,
-    data,
-    links
-  );
-  
-  try {
-    for(let noticia of ultimasNoticias) {
-      await territorioRepository.insert(noticia);
-    }
-  } catch (error) {
-    res.send({ response: "Ocorreu um Erro" });
+const updateDataModTelefones = async (req, res) => {
+  const telefone = req.params.telefone;
+
+  const dateMod = new Date();
+
+  const dataToUpdate = {
+    ultimaVezConsultado: dateMod
   }
-
-  res.send({ response: "Ultimas notícias salvas" });
+  
+  const result = await territorioRepository.updateOne(telefone, dataToUpdate);
+  res.send(result);
 };
 
-const download = async (req, res) => {
-  const filepath = __dirname + "/../download/ultimas_noticias.csv";
-
-  const results = await territorioRepository.findAll();
-  await CSV.generateCSV(results);
-  res.download(filepath);
-};
-
-modules.exports = {
+module.exports = {
   getMain,
-  getNoticias,
-  getNovas,
-  download
+  getTelefones,
+  updateDataModTelefones
 }

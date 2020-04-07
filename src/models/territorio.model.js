@@ -15,12 +15,20 @@ const territorioSchema = new Schema(
       type: String,
       required: true
     },
+    cep: {
+      type: String,
+      required: true
+    },
     cidade: {
       type: String,
       required: true
     },
     estado: {
       type: String,
+      required: true
+    },
+    ultimaVezConsultado: {
+      type: Date,
       required: true
     }
   },
