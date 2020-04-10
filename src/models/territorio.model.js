@@ -30,6 +30,9 @@ const territorioSchema = new Schema(
     ultimaVezConsultado: {
       type: Date,
       required: true
+    },
+    observacoes: {
+      type: [String]
     }
   },
   {
