@@ -4,5 +4,6 @@ const mainService = require("../services/mainService");
 
 router.get("/", mainService.getMain);
 router.get("/telefones/:endereco", mainService.getTelefones);
-router.put('/telefones/:telefone', mainService.updateDataModTelefones);
+router.get('/observacoes/:telefone', mainService.getObservacao);
+router.put('/observacoes/:telefone', mainService.updateDataModTelefones);
 module.exports = router;

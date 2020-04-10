@@ -12,6 +12,13 @@ const getTelefones = async (req, res) => {
   res.send(result);
 };
 
+const getObservacao = async (req, res) => {
+  const telefone = req.params.telefone;
+
+  const result = await territorioRepository.findOneByTelefone(telefone);
+  res.send(result);
+}
+
 const updateDataModTelefones = async (req, res) => {
   const telefone = req.params.telefone;
 
@@ -28,5 +35,6 @@ const updateDataModTelefones = async (req, res) => {
 module.exports = {
   getMain,
   getTelefones,
+  getObservacao,
   updateDataModTelefones
 }
