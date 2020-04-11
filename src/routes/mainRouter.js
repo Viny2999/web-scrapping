@@ -6,4 +6,6 @@ router.get("/", mainService.getMain);
 router.get("/telefones/:endereco", mainService.getTelefones);
 router.get('/observacoes/:telefone', mainService.getObservacao);
 router.put('/observacoes/:telefone', mainService.updateDataModTelefones);
+router.delete('/observacoes/:telefone', mainService.deleteObservacao);
+
 module.exports = router;

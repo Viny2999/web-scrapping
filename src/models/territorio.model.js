@@ -31,9 +31,17 @@ const territorioSchema = new Schema(
       type: Date,
       required: true
     },
-    observacoes: {
-      type: [String]
-    }
+    observacoes: [{
+      observacao : {
+        type: String,
+      },
+      author : {
+        type: String,
+      },
+      dataCriada: {
+        type: Date
+      }
+    }]
   },
   {
     collection: 'Territorios',

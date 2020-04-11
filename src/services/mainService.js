@@ -19,13 +19,23 @@ const getObservacao = async (req, res) => {
   res.send(result);
 }
 
+const deleteObservacao = async (req, res) => {
+  const telefone = req.params.telefone;
+  const id = req.query.id;
+
+  const result = await territorioRepository.deleteObservacao(telefone, id);
+  res.send(result);
+}
+
 const updateDataModTelefones = async (req, res) => {
   const telefone = req.params.telefone;
+  const observacoesArray = req.body.observacoes;
 
   const dateMod = new Date();
 
   const dataToUpdate = {
-    ultimaVezConsultado: dateMod
+    ultimaVezConsultado: dateMod,
+    observacoes: observacoesArray
   }
   
   const result = await territorioRepository.updateOne(telefone, dataToUpdate);
@@ -36,5 +46,6 @@ module.exports = {
   getMain,
   getTelefones,
   getObservacao,
+  deleteObservacao,
   updateDataModTelefones
 }

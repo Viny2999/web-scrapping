@@ -57,8 +57,8 @@ const updateOne = async (telefone, dataToUpdate) => {
   return await territorio.findOneAndUpdate({ telefone: telefone }, dataToUpdate);
 };
 
-const deleteOne = async name => {
-  return await territorio.deleteOne({ name: name });
+const deleteObservacao = async (telefone, id) => {
+  return await territorio.update({ 'telefone': telefone },{ $pull: { 'observacoes': { _id: id } } });
 };
 
 const getTelefoneByEndereco = async endereco => {
@@ -115,5 +115,5 @@ module.exports = {
   findOneByEstado,
   insert,
   updateOne,
-  deleteOne
+  deleteObservacao
 };
