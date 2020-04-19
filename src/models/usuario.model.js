@@ -18,6 +18,9 @@ const usuarioSchema = new Schema(
     userLevel: {
       type: String
     },
+    ruasAvailable: {
+      type: [String]
+    },
   },
   {
     collection: 'Usuarios',
