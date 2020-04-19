@@ -12,7 +12,7 @@ const congregacaoSchema = new Schema(
       required: true
     },
     ruas: {
-      type: String
+      type: [String]
     },
   },
   {
