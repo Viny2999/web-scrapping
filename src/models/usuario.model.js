@@ -14,7 +14,11 @@ const usuarioSchema = new Schema(
     congregation: {
       type: String,
       required: true
-    }
+    },
+    userLevel: {
+      type: String,
+      required: true
+    },
   },
   {
     collection: 'Usuarios',

@@ -3,8 +3,11 @@ const router = express.Router();
 const mainService = require("../services/main.service");
 const usuarioService = require("../services/usuario.service");
 const territorioService = require("../services/territorio.service");
+const congregacaoService = require("../services/congregacao.service");
 
 router.get("/", mainService.getMain);
+
+router.get("/congregacoes", congregacaoService.getAll);
 
 router.post("/login", usuarioService.login);
 router.post('/users', usuarioService.postUser);
