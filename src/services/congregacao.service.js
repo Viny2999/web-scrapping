@@ -5,6 +5,15 @@ const getAll = async (req, res) => {
   res.send(result);
 };
 
+
+const getCongregacaoByName = async (req, res) => {
+  const cod = req.params.congregacao;
+
+  const result = await congregacaoRepository.findOne(cod);
+  res.send(result);
+};
+
 module.exports = {
-  getAll
+  getAll,
+  getCongregacaoByName
 }

@@ -23,6 +23,11 @@ const findAll = async () => {
   return await congregacao.find({});
 };
 
+const findOne = async (cod) => {
+  return await congregacao.findOne({cod: cod});
+};
+
 module.exports = {
-  findAll
+  findAll,
+  findOne
 };

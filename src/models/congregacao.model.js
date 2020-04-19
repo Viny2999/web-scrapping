@@ -11,6 +11,9 @@ const congregacaoSchema = new Schema(
       type: String,
       required: true
     },
+    ruas: {
+      type: String
+    },
   },
   {
     collection: 'Congregacoes',

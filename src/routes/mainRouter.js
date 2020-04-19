@@ -8,6 +8,7 @@ const congregacaoService = require("../services/congregacao.service");
 router.get("/", mainService.getMain);
 
 router.get("/congregacoes", congregacaoService.getAll);
+router.get("/congregacoes/:congregacao", congregacaoService.getCongregacaoByName);
 
 router.post("/login", usuarioService.login);
 router.post('/users', usuarioService.postUser);
