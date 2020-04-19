@@ -16,7 +16,7 @@ const login = async (req, res) => {
   const congregation = loginResponse.get('congregation');
 
   const result = {
-    authorization: false,
+    authorization: true,
     congregation : congregation
   }  
 
