@@ -16,8 +16,7 @@ const usuarioSchema = new Schema(
       required: true
     },
     userLevel: {
-      type: String,
-      required: true
+      type: String
     },
   },
   {
