@@ -23,10 +23,17 @@ const login = async (req, res) => {
   res.send(result);
 };
 
-const findByUsername = async (req, res) => {
+const findOneByUsername = async (req, res) => {
   const username = req.params.username;
 
   const result = await usuarioRepository.findOneByUsername(username);
+  res.send(result);
+}
+
+const findByCongregation = async (req, res) => {
+  const congregation = req.params.congregation;
+
+  const result = await usuarioRepository.findByCongregation(congregation);
   res.send(result);
 }
 
@@ -62,7 +69,8 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   login,
-  findByUsername,
+  findOneByUsername,
+  findByCongregation,
   postUser,
   updateUser,
   deleteUser
