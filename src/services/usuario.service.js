@@ -8,12 +8,15 @@ const login = async (req, res) => {
   const passwordDB = loginResponse.get('password');
 
   if (password !== passwordDB) {
-    res.status(401).send();
+    res.status(401).send({
+      authorization: false
+    });
   }
   
   const congregation = loginResponse.get('congregation');
 
   const result = {
+    authorization: false,
     congregation : congregation
   }  
 
