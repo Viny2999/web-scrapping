@@ -23,6 +23,13 @@ const login = async (req, res) => {
   res.send(result);
 };
 
+const findByUsername = async (req, res) => {
+  const username = req.params.username;
+
+  const result = await usuarioRepository.findOneByUsername(username);
+  res.send(result);
+}
+
 const postUser = async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -55,6 +62,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   login,
+  findByUsername,
   postUser,
   updateUser,
   deleteUser
