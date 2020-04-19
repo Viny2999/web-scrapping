@@ -1,11 +1,5 @@
 const territorioRepository = require("../repositories/territorio.repository");
 
-const getMain = async (req, res) => {
-  res.send({
-    apiName: `Territorio - Scrapping API`
-  });
-};
-
 const getTelefones = async (req, res) => {
   const endereco = req.params.endereco;
   const result = await territorioRepository.getTelefoneByEndereco(endereco);
@@ -43,7 +37,6 @@ const updateDataModTelefones = async (req, res) => {
 };
 
 module.exports = {
-  getMain,
   getTelefones,
   getObservacao,
   deleteObservacao,
