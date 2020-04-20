@@ -12,6 +12,7 @@ router.get("/congregacoes/:congregacao", congregacaoService.getCongregacaoByName
 
 router.post("/login", usuarioService.login);
 router.get('/users/:username', usuarioService.findOneByUsername);
+router.get('/users/name/:name', usuarioService.findOneByName);
 router.get('/users/congregation/:congregation', usuarioService.findByCongregation);
 router.post('/users', usuarioService.postUser);
 router.put('/users/:username', usuarioService.updateUser);

@@ -32,6 +32,13 @@ const findOneByUsername = async (req, res) => {
   res.send(result);
 }
 
+const findOneByName = async (req, res) => {
+  const name = req.params.name;
+
+  const result = await usuarioRepository.findOneByName(name);
+  res.send(result);
+}
+
 const findByCongregation = async (req, res) => {
   const congregation = req.params.congregation;
 
@@ -74,6 +81,7 @@ const deleteUser = async (req, res) => {
 module.exports = {
   login,
   findOneByUsername,
+  findOneByName,
   findByCongregation,
   postUser,
   updateUser,

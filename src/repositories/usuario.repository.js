@@ -23,6 +23,10 @@ const findOneByUsername = async username => {
   return await usuario.findOne({ username: username });
 };
 
+const findOneByName = async name => {
+  return await usuario.findOne({ name: name });
+};
+
 const findByCongregation = async congregation => {
   return await usuario.find({ congregation: congregation });
 };
@@ -41,6 +45,7 @@ const deleteOne = async (username) => {
 
 module.exports = {
   findOneByUsername,
+  findOneByName,
   findByCongregation,
   insert,
   updateOne,
