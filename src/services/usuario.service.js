@@ -14,11 +14,13 @@ const login = async (req, res) => {
   }
   
   const congregation = loginResponse.get('congregation');
+  const name = loginResponse.get('name');
 
   const result = {
     authorization: true,
-    congregation : congregation
-  }  
+    congregation : congregation,
+    name: name
+  };
 
   res.send(result);
 };
@@ -38,11 +40,13 @@ const findByCongregation = async (req, res) => {
 }
 
 const postUser = async (req, res) => {
+  const name = req.body.name;
   const username = req.body.username;
   const password = req.body.password;
   const congregation = req.body.congregation;
 
   const newUser = {
+    name: name,
     username: username,
     password: password,
     congregation: congregation
